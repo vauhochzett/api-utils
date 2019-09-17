@@ -19,7 +19,7 @@ def join(first: str, *others: str) -> str:
     s = "/"
     strip = lambda p: p.strip(s)
 
-    all_components: List[str] = [p for p in [first, *others] if p != ""]
+    all_components: List[str] = [p for p in [first, *others] if p.strip() != ""]
 
     if not all_components:
         return ""
