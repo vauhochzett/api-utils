@@ -11,8 +11,8 @@ def join(first: str, *others: str) -> str:
 	Rules:
 	- The returned path will always start with "/", except if the first component starts with "http"
 	- The returned path will never end with "/", except when enforced (see below)
-	- Empty components will be discarded
 	- A trailing slash can be enforced with a final component "/"
+	- Empty components will be discarded
 	- Caution: "http://" will be stripped of its slashes! Instead pass "http://www.de" or similar.
 	"""
 
