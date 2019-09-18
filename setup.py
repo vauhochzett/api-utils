@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="api-utils",
-    version="2019.09",
+    version="2019.09.18",
     description="API utils simplify life when creating or consuming APIs",
     long_description=long_description,
     long_description_content_type="text/markdown",
@@ -16,5 +16,5 @@ setuptools.setup(
         "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
         "Operating System :: OS Independent",
     ],
-    python_requires='>=3.6',
+    python_requires=">=3.6",
 )
