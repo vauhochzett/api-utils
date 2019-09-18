@@ -19,23 +19,22 @@ def test_join():
         (["/a/", "/b/", "/c/"], "/a/b/c"),
         (["a", "b", "c", "d"], "/a/b/c/d"),
         # Last component "/" -> trailing slash
-        (["a", "b", "c", "/"], "/a/b/c/"),
-        (["a", "", "/"], "/a/"),
-        (["/", "a", "b", "c"], "/a/b/c"),
-        (["/", "", "a"], "/a"),
-        (["/", "", "a", "/"], "/a/"),
+        (["l", "b", "c", "/"], "/l/b/c/"),
+        (["l", "", "/"], "/l/"),
+        (["/", "l", "b", "c"], "/l/b/c"),
+        (["/", "", "l"], "/l"),
+        (["/", "", "l", "/"], "/l/"),
         # Last component "" -> no trailing slash
         (["a", ""], "/a"),
         # First component starts with "http" -> no starting slash
         (["http://r.a/w/", "x"], "http://r.a/w/x"),
         (["http://xyz", "x", "/"], "http://xyz/x/"),
         # Ensure robustness
-        (["", "a", "", "/b/", "/c", "/", ""], "/a/b/c/"),
         (["", "", ""], ""),
-        (["", "", "a"], "/a"),
-        (["", "", "/a"], "/a"),
-        (["", " ", "/a/"], "/a"),
-        (["  ", "", "/a/", ""], "/a"),
+        (["", "r", "", "/b/", "/c", "/", ""], "/r/b/c"),
+        (["", "", "r"], "/r"),
+        (["", "", "/r"], "/r"),
+        (["/r/", ""], "/r"),
     ]
 
     for inputs, expected_result in test_cases:
