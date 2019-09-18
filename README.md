@@ -4,9 +4,9 @@
 
 API utils simplify life when creating or consuming APIs
 
-## Module: api.path
+## Module: apiu.path
 
-### Method: api.path.join()
+### Method: apiu.path.join()
 
 Join one or more path components intelligently.
 
