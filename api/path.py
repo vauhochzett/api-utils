@@ -15,31 +15,40 @@ def join(first: str, *others: str) -> str:
 	- Empty components will be discarded
 	"""
 
-    # Remove all whitespace components
-    all_components: List[str] = [p for p in [first, *others] if p.strip() != ""]
+    all_components: List[str] = [first, *others]
 
-    if not all_components:
-        return ""
+    if any([type(x) not in [str, bytes] for x in all_components]):
+        raise TypeError("expected str or bytes objects")
 
     sep = "/"
-    # Empty components have been removed above
-    end_sep: bool = all_components[-1] == sep
+    final_sep: bool = all_components[-1] == sep
 
-    path_comps: List[str] = [""]  # Always start with a sep
+    final_path: str = sep
 
-    # Strip seps and...
-    for comp in [p.strip(sep) for p in all_components]:
-        # ...filter empty strings again to ensure that "/" and "//" do not result in double slashes
-        if comp == "" or comp.isspace():
+    for comp in all_components:
+        if comp == "":
             continue
-        # Reset when it's an absolute path
-        elif comp.startswith("http"):
-            path_comps = [comp]
-        else:
-            path_comps.append(comp)
 
-    if end_sep:
-        path_comps.append("")
+        assert final_path.endswith(sep)
 
-    result = sep.join(path_comps)
-    return result
+        remove_start_sep: bool = comp[0] == sep and final_path.endswith(sep)
+        append_end_sep: bool = comp[-1] != sep
+
+        # Absolute path: Reset path
+        if comp.startswith("http"):
+            final_path = ""
+            remove_start_sep = False
+
+        if remove_start_sep:
+            comp = comp[1:]
+
+        if append_end_sep:
+            comp += sep
+
+        final_path += comp
+
+    # Final sep allowed if enforced or if just a protocol
+    if not final_sep and not final_path.endswith("://"):
+        final_path = final_path[:-1]
+
+    return final_path
