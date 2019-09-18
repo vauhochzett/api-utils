@@ -25,7 +25,12 @@ def test_join():
         (["/", "", "l", "/"], "/l/"),
         # Last component "" -> no trailing slash
         (["a", ""], "/a"),
-        # First component starts with "http" -> no starting slash
+        # Absolute paths starting with "http" -> no starting slash
+        (["https://"], "https://"),
+        (["https://", "/a"], "https://a"),
+        (["http://", "abc.de/", "/g", "/"], "http://abc.de/g/"),
+        (["https://", "abc.de", "g", ""], "https://abc.de/g"),
+        (["a", "b", "", "https://", "bc.de"], "https://bc.de"),
         (["http://r.a/w/", "x"], "http://r.a/w/x"),
         (["http://xyz", "x", "/"], "http://xyz/x/"),
         # Spaces are preserved
