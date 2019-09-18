@@ -16,25 +16,31 @@ def join(first: str, *others: str) -> str:
 	- Caution: "http://" will be stripped of its slashes! Instead pass "http://www.de" or similar.
 	"""
 
-    s = "/"
-
+    # Remove all whitespace components
     all_components: List[str] = [p for p in [first, *others] if p.strip() != ""]
 
     if not all_components:
         return ""
 
-    start_s: bool = not all_components[0].startswith("http")
-    end_s: bool = all_components[-1] == s
+    sep = "/"
+    # Empty components have been removed above
+    end_sep: bool = all_components[-1] == sep
 
-    # Filter empty strings again; this ensures that "/" and "//" do not result in double slashes
-    stripped_components: List[str] = [
-        p for p in [p.strip(s) for p in all_components] if p != ""
-    ]
-    result = s.join(stripped_components)
+    path_comps: List[str] = [""]  # Always start with a sep
 
-    if start_s:
-        result = s + result
-    if end_s:
-        result = result + s
+    # Strip seps and...
+    for comp in [p.strip(sep) for p in all_components]:
+        # ...filter empty strings again to ensure that "/" and "//" do not result in double slashes
+        if comp == "" or comp.isspace():
+            continue
+        # Reset when it's an absolute path
+        elif comp.startswith("http"):
+            path_comps = [comp]
+        else:
+            path_comps.append(comp)
 
+    if end_sep:
+        path_comps.append("")
+
+    result = sep.join(path_comps)
     return result
