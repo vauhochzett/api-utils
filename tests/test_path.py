@@ -28,6 +28,9 @@ def test_join():
         # First component starts with "http" -> no starting slash
         (["http://r.a/w/", "x"], "http://r.a/w/x"),
         (["http://xyz", "x", "/"], "http://xyz/x/"),
+        # Spaces are preserved
+        (["  ", "", "/e /", ""], "/  /e "),
+        (["", "  ", "  e  ", "", "/"], "/  /  e  /"),
         # Ensure robustness
         ([""], ""),
         (["", "", ""], ""),
