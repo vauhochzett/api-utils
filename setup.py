@@ -5,11 +5,11 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="api-utils",
-    version="2019.09.18",
+    version="2019.9.18",
     description="API utils simplify life when creating or consuming APIs",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="",
+    url="https://pypi.org/project/api-utils/",
     packages=setuptools.find_packages(exclude=["tests"]),
     classifiers=[
         "Programming Language :: Python :: 3",
