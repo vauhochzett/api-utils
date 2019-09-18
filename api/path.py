@@ -7,12 +7,14 @@ from typing import List, Tuple
 def join(first: str, *others: str) -> str:
     """
 	Join one or more path components intelligently.
-	Contrary to `os.path`, "absolute paths" are not denoted by a starting slash, but by a protocol.
+
 	Rules:
-	- The returned path will always start with "/", except if the first component starts with "http"
-	- The returned path will never end with "/", except when enforced (see below)
+    - If any component starts with "http", all previous parts will be discarded.
+	- The returned path will always start with "/", except if it starts with "http".
+	- The returned path will never end with "/", except when ending in a protocol
+      notation ("://") or enforced (see below)
 	- A trailing slash can be enforced with a final component "/"
-	- Empty components will be discarded
+	- Empty strings are skipped
 	"""
 
     all_components: List[str] = [first, *others]
