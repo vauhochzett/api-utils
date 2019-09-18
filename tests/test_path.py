@@ -1,10 +1,10 @@
 # encoding=utf-8
 
-""" Test module for api.path """
+""" Test module for apiu.path """
 
 from typing import List, Tuple
 
-import api.path
+import apiu.path
 
 
 def test_join():
@@ -46,5 +46,5 @@ def test_join():
     ]
 
     for inputs, expected_result in test_cases:
-        actual_result = api.path.join(*inputs)
+        actual_result = apiu.path.join(*inputs)
         assert expected_result == actual_result
