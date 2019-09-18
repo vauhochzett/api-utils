@@ -10,7 +10,6 @@ import api.path
 def test_join():
     test_cases: List[Tuple[List[str], str]] = [
         # Always starts with "/", never ends with "/" for normal inputs
-        ([""], ""),
         (["abc"], "/abc"),
         (["a/", "b/", "c/"], "/a/b/c"),
         (["/a", "/b", "/c"], "/a/b/c"),
@@ -30,6 +29,7 @@ def test_join():
         (["http://r.a/w/", "x"], "http://r.a/w/x"),
         (["http://xyz", "x", "/"], "http://xyz/x/"),
         # Ensure robustness
+        ([""], ""),
         (["", "", ""], ""),
         (["", "r", "", "/b/", "/c", "/", ""], "/r/b/c"),
         (["", "", "r"], "/r"),
