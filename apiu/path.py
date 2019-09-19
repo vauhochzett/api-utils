@@ -6,16 +6,16 @@ from typing import List, Tuple
 
 def join(first: str, *others: str) -> str:
     """
-	Join one or more path components intelligently.
+    Join one or more path components intelligently.
 
-	Rules:
+    Rules:
     - If any component starts with "http", all previous parts will be discarded.
-	- The returned path will always start with "/", except if it starts with "http".
-	- The returned path will never end with "/", except when ending in a protocol
+    - The returned path will always start with "/", except if it starts with "http".
+    - The returned path will never end with "/", except when ending in a protocol
       notation ("://") or enforced (see below)
-	- A trailing slash can be enforced with a final component "/"
-	- Empty strings are skipped
-	"""
+    - A trailing slash can be enforced with a final component "/"
+    - Empty strings are skipped
+    """
 
     all_components: List[str] = [first, *others]
 
