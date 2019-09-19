@@ -17,9 +17,9 @@ def join(first: str, *others: str) -> str:
     - Empty strings are skipped
 
     Examples:
-    - ["https://"] -> "https://
-    - ["web", "rest", "2.0"] -> "/web/rest/2.0"
-    - ["http://example.com/", "/api/", "/" ] -> "http://example.com/api/"
+    - join("https://")                           ->  "https://
+    - join("web", "rest", "2.0")                 ->  "/web/rest/2.0"
+    - join("http://example.com/", "/api/", "/")  ->  "http://example.com/api/"
     """
 
     all_components: List[str] = [first, *others]
