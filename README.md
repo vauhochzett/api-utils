@@ -1,6 +1,8 @@
 # API utils
 
-[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+[![pypi/api-utils](https://black.readthedocs.io/en/stable/_static/pypi.svg)](https://pypi.org/project/api-utils/)
+[![license: GPLv3](https://img.shields.io/pypi/l/api-utils?color=brightgreen)](LICENSE)
+[![code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
 API utils simplify life when creating or consuming APIs
 
