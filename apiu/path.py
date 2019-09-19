@@ -28,7 +28,7 @@ def join(first: str, *others: str) -> str:
         raise TypeError("expected str or bytes objects")
 
     sep = "/"
-    final_sep: bool = all_components[-1] == sep
+    final_sep_enforced: bool = all_components[-1] == sep
 
     final_path: str = sep
 
@@ -54,8 +54,8 @@ def join(first: str, *others: str) -> str:
 
         final_path += comp
 
-    # Final sep allowed if enforced or if just a protocol
-    if not final_sep and not final_path.endswith("://"):
+    is_protocol: bool = final_path.endswith("://")
+    if not final_sep_enforced and not is_protocol:
         final_path = final_path[:-1]
 
     return final_path
