@@ -15,11 +15,16 @@ def join(first: str, *others: str) -> str:
       notation ("://") or enforced (see below)
     - A trailing slash can be enforced with a final component "/"
     - Empty strings are skipped
+
+    Examples:
+    - ["https://"] -> "https://
+    - ["web", "rest", "2.0"] -> "/web/rest/2.0"
+    - ["http://example.com/", "/api/", "/" ] -> "http://example.com/api/"
     """
 
     all_components: List[str] = [first, *others]
 
-    if any([type(x) not in [str, bytes] for x in all_components]):
+    if any(type(x) not in {str, bytes} for x in all_components):
         raise TypeError("expected str or bytes objects")
 
     sep = "/"
