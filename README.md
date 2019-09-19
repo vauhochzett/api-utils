@@ -10,10 +10,15 @@ API utils simplify life when creating or consuming APIs
 
 Join one or more path components intelligently.
 
-Rules:
+**Rules:**
 - If any component starts with "http", all previous parts will be discarded.
 - The returned path will always start with "/", except if it starts with "http".
 - The returned path will never end with "/", except when ending in a protocol
 	notation ("://") or enforced (see below)
 - A trailing slash can be enforced with a final component "/"
 - Empty strings are skipped
+
+**Examples:**
+- join("https://")                           ->  "https://
+- join("web", "rest", "2.0")                 ->  "/web/rest/2.0"
+- join("http://example.com/", "/api/", "/")  ->  "http://example.com/api/"
