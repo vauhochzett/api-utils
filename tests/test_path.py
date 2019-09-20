@@ -1,5 +1,3 @@
-# encoding=utf-8
-
 """ Test module for apiu.path """
 
 from typing import List, Tuple
